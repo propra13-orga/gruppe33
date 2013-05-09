@@ -17,8 +17,7 @@ public class Maps {
 			Maps.MapList.add(newMap);
 		}
 		
-		int x = 3;
-		
-		System.out.println("Maps geladen");
+		// ... und am Ende wollen wir wissen, wieviele Maps hat das Ding jetzt?
+		System.out.println(Integer.toString(Maps.MapList.size()) + "Maps geladen");
 	}
 }
