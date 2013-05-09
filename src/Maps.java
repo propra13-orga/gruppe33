@@ -10,7 +10,7 @@ public class Maps {
 		File getDir = new File(dir);
 		File[] mapDir = getDir.listFiles();
 		
-		for(int i = 0; i <= mapDir.length; i++) {
+		for(int i = 0; i < mapDir.length; i++) {
 			String mapFile = mapDir[i].getAbsolutePath();
 			
 			Map newMap = new Map(mapFile);
@@ -18,6 +18,6 @@ public class Maps {
 		}
 		
 		// ... und am Ende wollen wir wissen, wieviele Maps hat das Ding jetzt?
-		System.out.println(Integer.toString(Maps.MapList.size()) + "Maps geladen");
+		System.out.println(Integer.toString(Maps.MapList.size()) + " Maps geladen");
 	}
 }
