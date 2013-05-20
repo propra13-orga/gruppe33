@@ -21,4 +21,14 @@ public class Maps {
 		// ... und am Ende wollen wir wissen, wieviele Maps hat das Ding jetzt?
 		System.out.println(Integer.toString(Maps.MapList.size()) + " Maps geladen");
 	}
+	
+	public static Map GetMap(int Level) {
+		for(int i = 0; i < Maps.MapList.size(); i++) {
+			if(Maps.MapList.get(i).Level == Level) {
+				return Maps.MapList.get(i);
+			}
+		}
+		
+		return null;
+	}
 }
