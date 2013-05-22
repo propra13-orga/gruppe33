@@ -1,15 +1,15 @@
+import javax.swing.JFrame;
+
 public class DrawManager {
-	public static void DrawMap(Map m) {
-		StdDraw.setCanvasSize(m.Size[0] * 32, m.Size[1] * 32);
-		
-		for(int y = 0; y < m.Size[1]; y++) {
-			for(int x = 0; x < m.Size[0]; x++) {
-				int field = m.GetField(x, y);
-				System.out.println("X: " + x + ", Y: " + y + ", M: " + field);
-				StdDraw.picture(32 * x, 32 * y, "images/" + String.valueOf(field) + ".jpg");
-				break;
-			}
-			break;
-		}
-	}
+  public static void DrawMap(Map m) {
+    JFrame window = new JFrame();
+    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    window.setBounds(30, 30, 300, 300);
+    
+    MapCanvas mc = new MapCanvas();
+    mc.MapToDraw = m;
+    
+    window.getContentPane().add(mc);
+    window.setVisible(true);
+  }
 }
