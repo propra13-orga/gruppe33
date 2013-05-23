@@ -10,9 +10,9 @@ public class DrawManager {
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		int width = m.Size[0];
-		int height = m.Size[1];
+		int height = m.Size[1] + 1;
 		
-		window.setBounds(30, 30, width * 32, height * 32);
+		window.setBounds(30, 30, (width* 32) + 11, (height * 32) + 11);
 		
 		
 		MapCanvas mc = new MapCanvas();
