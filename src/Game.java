@@ -7,19 +7,20 @@ public class Game {
 	public static Map CurrentMap;
 	
 	public static void main(String[] args) throws IOException {
-		System.out.println(System.getProperty("user.dir") + "\\maps");
 		Maps.LoadMapList(System.getProperty("user.dir") + "\\maps");
 		Enemys.LoadEnemeys(System.getProperty("user.dir") + "\\enemys");
 		
-		Game.CurrentLevel = 1;
-		// SAVE LEVEL
+		DrawManager.DrawMenu();
+	}
+	
+	public static void LoadMap(int GameLevel) {
+		Game.CurrentLevel = GameLevel;
+		Game.CurrentMap = Maps.GetMap(GameLevel);
 		
-		Char.PosX = Config.POSX_PLAYER_START;
-		Char.PosY = Config.POSY_PLAYER_START;
+		Char.PosX = Game.CurrentMap.Player_Start_Positions[0];
+		Char.PosY = Game.CurrentMap.Player_Start_Positions[1];
 		
-		Game.CurrentMap = Maps.GetMap(Game.CurrentLevel);
 		DrawManager.DrawMap(Game.CurrentMap);
-		
 		DrawManager.window.addKeyListener(new KeyAdapter()
 		{
 			public void keyPressed(KeyEvent ke) {
@@ -39,8 +40,21 @@ public class Game {
 		});
 	}
 	
+	public static void StartMenu() {
+		DrawManager.window.getContentPane().removeAll();
+		DrawManager.window.revalidate();
+		DrawManager.window.repaint();
+		
+		ImageCanvas ic = new ImageCanvas();
+		ic.filename = "images/startmenu.jpg";
+    	
+		DrawManager.window.getContentPane().add(ic);
+		DrawManager.window.setBounds(30, 30, 640, 480);
+		DrawManager.window.setVisible(true);
+	}
+	
 	public static void GameOver() {
-		// TODO: GAMEOVER SCREEN
+		// TODO: OPTIMIZING THIS WEIRD STUFF
 		DrawManager.window.getContentPane().removeAll();
 		DrawManager.window.revalidate();
 		DrawManager.window.repaint();
