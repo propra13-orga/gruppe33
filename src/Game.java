@@ -8,7 +8,8 @@ public class Game {
 	
 	public static void main(String[] args) throws IOException {
 		System.out.println(System.getProperty("user.dir") + "\\maps");
-		Maps.LoadMapList(3, System.getProperty("user.dir") + "\\maps");
+		Maps.LoadMapList(System.getProperty("user.dir") + "\\maps");
+		Enemys.LoadEnemeys(System.getProperty("user.dir") + "\\enemys");
 		
 		Game.CurrentLevel = 1;
 		// SAVE LEVEL

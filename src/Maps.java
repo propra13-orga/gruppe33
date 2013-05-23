@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Maps {
 	public static ArrayList<Map> MapList;
 	
-	public static void LoadMapList(int MaxMaps, String dir) throws IOException {
+	public static void LoadMapList(String dir) throws IOException {
 		Maps.MapList = new ArrayList<Map>();
 		
 		File getDir = new File(dir);
