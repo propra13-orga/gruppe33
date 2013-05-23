@@ -21,23 +21,6 @@ public class Game {
 		Char.PosY = Game.CurrentMap.Player_Start_Positions[1];
 		
 		DrawManager.DrawMap(Game.CurrentMap);
-		DrawManager.window.addKeyListener(new KeyAdapter()
-		{
-			public void keyPressed(KeyEvent ke) {
-				if(ke.getKeyCode() == KeyEvent.VK_UP) {
-					Char.MoveUp();
-				}
-				if(ke.getKeyCode() == KeyEvent.VK_DOWN) {
-					Char.MoveDown();
-				}
-				if(ke.getKeyCode() == KeyEvent.VK_RIGHT) {
-					Char.MoveRight();
-				}
-				if(ke.getKeyCode() == KeyEvent.VK_LEFT) {
-					Char.MoveLeft();
-				}
-			}
-		});
 	}
 	
 	public static void StartMenu() {

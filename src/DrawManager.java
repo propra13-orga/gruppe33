@@ -6,10 +6,9 @@ import java.awt.event.KeyEvent;
 import javax.swing.JFrame;
 
 public class DrawManager {
-	public static JFrame window;
+	public static JFrame window = new JFrame();
 	public static void DrawMap(Map m) {
-		window = new JFrame();
-		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		window.getContentPane().removeAll();
 		
 		int width = m.Size[0];
 		int height = m.Size[1] + 1;
@@ -21,10 +20,27 @@ public class DrawManager {
     
     	window.getContentPane().add(mc);
     	window.setVisible(true);
+    	
+    	window.addKeyListener(new KeyAdapter()
+		{
+			public void keyPressed(KeyEvent ke) {
+				if(ke.getKeyCode() == KeyEvent.VK_UP) {
+					Char.MoveUp();
+				}
+				if(ke.getKeyCode() == KeyEvent.VK_DOWN) {
+					Char.MoveDown();
+				}
+				if(ke.getKeyCode() == KeyEvent.VK_RIGHT) {
+					Char.MoveRight();
+				}
+				if(ke.getKeyCode() == KeyEvent.VK_LEFT) {
+					Char.MoveLeft();
+				}
+			}
+		});
 	}
 	
 	public static void DrawMenu() {
-		window = new JFrame();
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		MenuCanvas mc = new MenuCanvas();
@@ -50,7 +66,9 @@ public class DrawManager {
 				
 				if(ke.getKeyCode() == KeyEvent.VK_ENTER) {
 					switch(MenuCanvas.CurrentState){
-					
+					case 1:
+						Game.LoadMap(2);
+						break;
 					}
 				}
 				

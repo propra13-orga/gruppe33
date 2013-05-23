@@ -24,7 +24,8 @@ public class Enemys {
 	
 	public static Enemy GetEnemyOnThisField(int x, int y) {
 		for(int i = 0; i < Enemys.EnemyList.size(); i++) {
-			if(Enemys.EnemyList.get(i).X == x && Enemys.EnemyList.get(i).Y == y) {
+			if(Enemys.EnemyList.get(i).X == x && Enemys.EnemyList.get(i).Y == y
+					&& Enemys.EnemyList.get(i).MapLevel == Game.CurrentLevel) {
 				return Enemys.EnemyList.get(i);
 			}
 		}
