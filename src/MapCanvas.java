@@ -18,13 +18,9 @@ public class MapCanvas extends JComponent {
 				g2.drawImage(img1, x * 32, y * 32, this);
 			    g2.finalize();
 			    
-			    int evar = Enemys.isEnemy(x, y, Game.CurrentLevel);
-			    
-			    if(evar > 0) {
-			    	System.out.println("X: " + x + " Y: " + y + " TYPE: " + evar);
-			    }
-			    if(evar > 0){
-			    	Image enemyImg = Toolkit.getDefaultToolkit().getImage("images/Enemy" + String.valueOf(evar) + ".png");
+			    Enemy eOnField = Enemys.GetEnemyOnThisField(x, y);
+			    if(eOnField != null){
+			    	Image enemyImg = Toolkit.getDefaultToolkit().getImage("images/Enemy" + eOnField.EType + ".png");
 			    	g2.drawImage(enemyImg, x * 32, y * 32, this);
 			    	g2.finalize();
 			    }

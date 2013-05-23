@@ -14,8 +14,8 @@ public class Game {
 		Game.CurrentLevel = 1;
 		// SAVE LEVEL
 		
-		Char.PosX = config.POSX_PLAYER_START;
-		Char.PosY = config.POSY_PLAYER_START;
+		Char.PosX = Config.POSX_PLAYER_START;
+		Char.PosY = Config.POSY_PLAYER_START;
 		
 		Game.CurrentMap = Maps.GetMap(Game.CurrentLevel);
 		DrawManager.DrawMap(Game.CurrentMap);
@@ -41,5 +41,15 @@ public class Game {
 	
 	public static void GameOver() {
 		// TODO: GAMEOVER SCREEN
+		DrawManager.window.getContentPane().removeAll();
+		DrawManager.window.revalidate();
+		DrawManager.window.repaint();
+		
+		ImageCanvas ic = new ImageCanvas();
+		ic.filename = "images/gameover.jpg";
+    	
+		DrawManager.window.getContentPane().add(ic);
+		DrawManager.window.setBounds(30, 30, 640, 480);
+		DrawManager.window.setVisible(true);
 	}
 }
