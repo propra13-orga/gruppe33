@@ -19,5 +19,9 @@ public class MapCanvas extends JComponent {
 			    g2.finalize();
 			}
 		}
+	    
+	    Image imgChar = Toolkit.getDefaultToolkit().getImage("images/char.png");
+	    g2.drawImage(imgChar, Char.PosX * 32, Char.PosY * 32, this);
+	    g2.finalize();
 	}
 }
