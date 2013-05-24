@@ -22,6 +22,7 @@ public class DrawManager {
     
     	window.getContentPane().add(mc);
     	window.setVisible(true);
+    	window.setTitle(mc.MapToDraw.Name);
     	
     	window.removeKeyListener(CurrentKeyListener);
     	
