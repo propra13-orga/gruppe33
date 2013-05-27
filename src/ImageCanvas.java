@@ -4,6 +4,11 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.JComponent;
 
+/**
+ * Das Canvas, welches Bilder aufs Fenster bringt (zB Game-Over) 
+ * @author Gruppe
+ *
+ */
 public class ImageCanvas extends JComponent {
 	public String filename;
 	
