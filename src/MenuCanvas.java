@@ -4,7 +4,13 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.JComponent;
 
+/**
+ * Auf dieses Canvas wird das Menü gezeichnet
+ * @author Gruppe33
+ *
+ */
 public class MenuCanvas extends JComponent {
+	// Steht für das Feld auf den der Zeiger gerade zeigt
 	public static int CurrentState = 1;
 	
 	public void paint(Graphics g) {
