@@ -50,6 +50,7 @@ public class Map {
 		int[] playerendpos = {Integer.parseInt(params[6]), Integer.parseInt(params[7])};
 		this.Player_End_Positions = playerendpos;
 		
+		// Der letze Parameter sind die einzelnen Felder welche nochmal durch # getrennt werden
 		String[] fieldsData = params[8].split("#");
 		for(int i = 0; i < fieldsData.length; i++) {
 			char[] fdata = fieldsData[i].toCharArray();
@@ -57,6 +58,7 @@ public class Map {
 			int y = Integer.parseInt(String.valueOf(fdata[1]));
 			int mode = Integer.parseInt(String.valueOf(fdata[2]));
 			
+			// Letztendlich setzen wir den Zustand des Feldes.
 			this.Fields[x][y] = mode;
 		}
 	}
