@@ -59,4 +59,5 @@ public class Char {
 			DrawManager.window.repaint();
 		}
 	}
+	
 }
