@@ -39,6 +39,12 @@ public class MapCanvas extends JComponent {
 			}
 		}
 	    
+	    if(Game.Goal[2] == Game.CurrentLevel) {
+	    	Image imgGoal = Toolkit.getDefaultToolkit().getImage("images/goal.png");
+		    g2.drawImage(imgGoal, Game.Goal[0] * 32, Game.Goal[1] * 32, this);
+		    g2.finalize();
+	    }
+	    
 	    // und was niemals fehlen dürfte, wäre zu guter letzt der Spieler.
 	    Image imgChar = Toolkit.getDefaultToolkit().getImage("images/char.png");
 	    g2.drawImage(imgChar, Char.PosX * 32, Char.PosY * 32, this);

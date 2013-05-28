@@ -78,6 +78,13 @@ public class DrawManager {
 					Game.LoadMap(Game.CurrentLevel, false);
 				}
 				
+				// Wenn der Spieler auf dem Zielfeld ist
+				if(Game.CurrentLevel == Game.Goal[2]
+						&& Char.PosX == Game.Goal[0]
+						&& Char.PosY == Game.Goal[1]) {
+					Game.Win();
+				}
+				
 				
 			}
 		};

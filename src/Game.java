@@ -12,7 +12,7 @@ public class Game {
 	public static Map CurrentMap;
 	
 	// Die Koordinaten des Ziels im Spiel, [2] : Level
-	public static int[] Goal = {2, 1, 3};
+	public static int[] Goal = {1, 1, 3};
 	
 	// Die Startpositionen des Charakters im Spiel
 	public static int[] Start = {1, 4};
@@ -68,5 +68,55 @@ public class Game {
 		DrawManager.window.getContentPane().add(ic);
 		DrawManager.window.setBounds(30, 30, 640, 480);
 		DrawManager.window.setVisible(true);
+		
+		DrawManager.window.removeKeyListener(DrawManager.CurrentKeyListener);
+		DrawManager.CurrentKeyListener = new KeyAdapter()
+		{
+			public void keyPressed(KeyEvent ke) {
+				if(ke.getKeyCode() == KeyEvent.VK_ENTER){
+					Game.LoadMap(1, false);
+					
+					// Die Startpositionen werden gesetzt
+					Char.PosX = Game.Start[0];
+					Char.PosY = Game.Start[1];
+				}
+			}
+		};
+		
+		
+		DrawManager.window.addKeyListener(DrawManager.CurrentKeyListener);
+	}
+	
+	/**
+	 * Wird ausgeführt wenn Spieler auf Zielfeld ist
+	 */
+	public static void Win() {
+		// TODO: OPTIMIZING THIS WEIRD STUFF
+		DrawManager.window.getContentPane().removeAll();
+		DrawManager.window.revalidate();
+		DrawManager.window.repaint();
+				
+		ImageCanvas ic = new ImageCanvas();
+		ic.filename = "images/win.jpg";
+		    	
+		DrawManager.window.getContentPane().add(ic);
+		DrawManager.window.setBounds(30, 30, 640, 480);
+		DrawManager.window.setVisible(true);
+		
+		DrawManager.window.removeKeyListener(DrawManager.CurrentKeyListener);
+		DrawManager.CurrentKeyListener = new KeyAdapter()
+		{
+			public void keyPressed(KeyEvent ke) {
+				if(ke.getKeyCode() == KeyEvent.VK_ENTER){
+					Game.LoadMap(1, false);
+					// Die Startpositionen werden gesetzt
+					Char.PosX = Game.Start[0];
+					Char.PosY = Game.Start[1];
+				}
+			}
+		};
+		
+		
+		DrawManager.window.addKeyListener(DrawManager.CurrentKeyListener);
 	}
 }
