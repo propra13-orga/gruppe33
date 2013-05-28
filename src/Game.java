@@ -2,6 +2,11 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 
+/**
+ * Die Hauptklasse, hier ist der Einstiegspunkt für das Spiel
+ * @author Gruppe3
+ *
+ */
 public class Game {
 	public static int CurrentLevel;
 	public static Map CurrentMap;
@@ -12,6 +17,11 @@ public class Game {
 	// Die Startpositionen des Charakters im Spiel
 	public static int[] Start = {1, 4};
 	
+	/**
+	 * Lädt die Maps, die Gegner und anschließend das Startmenü
+	 * @param args
+	 * @throws IOException
+	 */
 	public static void main(String[] args) throws IOException {
 		Maps.LoadMapList(System.getProperty("user.dir") + "\\maps");
 		Enemys.LoadEnemeys(System.getProperty("user.dir") + "\\enemys");
@@ -19,6 +29,11 @@ public class Game {
 		DrawManager.DrawMenu();
 	}
 	
+	/**
+	 * Lädt eine Map und zeichnet sie und den Spieler aufs JFrame
+	 * @param GameLevel Das Spiellevel, welches geladen werden soll
+	 * @param GoBack Kommt man gerade durch einen Ausgang?
+	 */
 	public static void LoadMap(int GameLevel, Boolean GoBack) {
 		Game.CurrentLevel = GameLevel;
 		Game.CurrentMap = Maps.GetMap(GameLevel);
@@ -38,19 +53,9 @@ public class Game {
 		DrawManager.DrawMap(Game.CurrentMap);
 	}
 	
-	public static void StartMenu() {
-		DrawManager.window.getContentPane().removeAll();
-		DrawManager.window.revalidate();
-		DrawManager.window.repaint();
-		
-		ImageCanvas ic = new ImageCanvas();
-		ic.filename = "images/startmenu.jpg";
-    	
-		DrawManager.window.getContentPane().add(ic);
-		DrawManager.window.setBounds(30, 30, 640, 480);
-		DrawManager.window.setVisible(true);
-	}
-	
+	/**
+	 * Hier wird das GameOver ausgeführt und auch aufs JFrame zeichnet
+	 */
 	public static void GameOver() {
 		// TODO: OPTIMIZING THIS WEIRD STUFF
 		DrawManager.window.getContentPane().removeAll();
