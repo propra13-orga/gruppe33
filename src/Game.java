@@ -6,6 +6,12 @@ public class Game {
 	public static int CurrentLevel;
 	public static Map CurrentMap;
 	
+	// Die Koordinaten des Ziels im Spiel, [2] : Level
+	public static int[] Goal = {2, 1, 3};
+	
+	// Die Startpositionen des Charakters im Spiel
+	public static int[] Start = {1, 4};
+	
 	public static void main(String[] args) throws IOException {
 		Maps.LoadMapList(System.getProperty("user.dir") + "\\maps");
 		Enemys.LoadEnemeys(System.getProperty("user.dir") + "\\enemys");
@@ -13,12 +19,21 @@ public class Game {
 		DrawManager.DrawMenu();
 	}
 	
-	public static void LoadMap(int GameLevel) {
+	public static void LoadMap(int GameLevel, Boolean GoBack) {
 		Game.CurrentLevel = GameLevel;
 		Game.CurrentMap = Maps.GetMap(GameLevel);
 		
-		Char.PosX = Game.CurrentMap.Player_Start_Positions[0];
-		Char.PosY = Game.CurrentMap.Player_Start_Positions[1];
+		System.out.println(Game.CurrentLevel);
+		if(!GoBack) {
+			Char.PosX = Game.CurrentMap.Player_Start_Positions[0];
+			Char.PosY = Game.CurrentMap.Player_Start_Positions[1];
+		} else {
+			Char.PosX = Game.CurrentMap.Player_End_Positions[0];
+			// Damit der Char ein weiter unten kommt und nicht wieder zurückgeschickt wird
+			Char.PosY = Game.CurrentMap.Player_End_Positions[1] + 1;
+			
+			// TODO: Oberes verhindern
+		}
 		
 		DrawManager.DrawMap(Game.CurrentMap);
 	}

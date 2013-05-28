@@ -64,11 +64,21 @@ public class DrawManager {
 					Char.MoveLeft();
 				}
 				
+				// Falls wir auf einen Eingang treffen
+				if(Game.CurrentMap.Player_Start_Positions[0] == Char.PosX
+						&& Game.CurrentMap.Player_Start_Positions[1] == Char.PosY) {
+					Game.CurrentLevel--;
+					Game.LoadMap(Game.CurrentLevel, true);
+				}
+				
+				// Falls wir auf einen Ausgang treffen
 				if(Game.CurrentMap.Player_End_Positions[0] == Char.PosX 
 						&& Game.CurrentMap.Player_End_Positions[1] == Char.PosY) {
 					Game.CurrentLevel++;
-					Game.LoadMap(Game.CurrentLevel);
+					Game.LoadMap(Game.CurrentLevel, false);
 				}
+				
+				
 			}
 		};
 		
@@ -116,7 +126,11 @@ public class DrawManager {
 				if(ke.getKeyCode() == KeyEvent.VK_ENTER) {
 					switch(MenuCanvas.CurrentState){
 					case 1: // NEUES SPIEL
-						Game.LoadMap(1); // Lädt das erste Level
+						Game.LoadMap(1, false); // Lädt das erste Level
+						
+						// Die Startpositionen werden gesetzt
+						Char.PosX = Game.Start[0];
+						Char.PosY = Game.Start[1];
 						break;
 					case 2:
 						// TODO: LOAD MAP
