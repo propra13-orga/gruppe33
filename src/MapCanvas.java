@@ -13,9 +13,6 @@ import javax.swing.JComponent;
 public class MapCanvas extends JComponent {
 	Map MapToDraw;
 	
-	/**
-	 * Zeichnet die Map
-	 */
 	public void paint(Graphics g) {
 	    Graphics2D g2 = (Graphics2D) g;
 	    

@@ -41,7 +41,7 @@ public class Map {
 		this.Size = getSize;
 		
 		// Auch wenn der Programmierer bei 0 anfängt zu zählen, sollte das bei den MapDateien nicht so sein.
-		this.Fields = new int[this.Size[0]][this.Size[1]];
+		this.Fields = new int[this.Size[0] + 1][this.Size[1] + 1];
 		// Eingänge des Spielers Map
 		int[] playerstartpos = {Integer.parseInt(params[4]), Integer.parseInt(params[5])};
 		this.Player_Start_Positions = playerstartpos;
@@ -89,6 +89,6 @@ public class Map {
 		int width = this.Size[0] * 32;
 		int height = this.Size[1] * 32;
 		
-		return x < 0 || y < 0 || x > width || y > height;
+		return x >= 0 && y >= 0 && x < width && y < height;
 	}
 }
